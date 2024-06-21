@@ -1,0 +1,328 @@
+<channel version="4.4.2">
+  <id>1ea8cdf2-4c7a-4295-856f-a5af6f757328</id>
+  <nextMetaDataId>2</nextMetaDataId>
+  <name>labo-envoi</name>
+  <description></description>
+  <revision>22</revision>
+  <sourceConnector version="4.4.2">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.jdbc.DatabaseReceiverProperties" version="4.4.2">
+      <pluginProperties/>
+      <pollConnectorProperties version="4.4.2">
+        <pollingType>INTERVAL</pollingType>
+        <pollOnStart>true</pollOnStart>
+        <pollingFrequency>5000</pollingFrequency>
+        <pollingHour>0</pollingHour>
+        <pollingMinute>0</pollingMinute>
+        <cronJobs/>
+        <pollConnectorPropertiesAdvanced>
+          <weekly>true</weekly>
+          <inactiveDays>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </inactiveDays>
+          <dayOfMonth>1</dayOfMonth>
+          <allDay>true</allDay>
+          <startingHour>8</startingHour>
+          <startingMinute>0</startingMinute>
+          <endingHour>17</endingHour>
+          <endingMinute>0</endingMinute>
+        </pollConnectorPropertiesAdvanced>
+      </pollConnectorProperties>
+      <sourceConnectorProperties version="4.4.2">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <driver>org.postgresql.Driver</driver>
+      <url>jdbc:postgresql://localhost:5432/Projet-Mirth</url>
+      <username>postgres</username>
+      <password>root</password>
+      <select>SELECT msh.service_emetteur AS msh_service_emetteur, msh.etablissement_source AS msh_etablissement_source, msh.service_destinataire AS msh_service_destinataire, msh.etablissement_destination AS msh_etablissement_destination, msh.type_message AS msh_type_message, msh.id_message AS msh_id_message, msh.langue_message AS msh_langue_message, msh.date_heure_production AS msh_date_heure_production, pid.identifiant_patient AS pid_identifiant_patient, pid.nom_patient AS pid_nom_patient, pid.prenom_patient AS pid_prenom_patient, pid.genre AS pid_genre, pid.adresse_postale AS pid_adresse_postale, pid.ville AS pid_ville, pid.code_postal AS pid_code_postal, pid.pays AS pid_pays, pid.numero_telephone AS pid_numero_telephone, pid.statut_marital AS pid_statut_marital, pid.date_naissance AS pid_date_naissance, pv1.code_service AS pv1_code_service, pv1.identifiant_medecin AS pv1_identifiant_medecin, pv1.identifiant_venue AS pv1_identifiant_venue, pv1.date_admission AS pv1_date_admission, evn.type_evenement AS evn_type_evenement, evn.date_evenement AS evn_date_evenement
+FROM msh, pid, pv1, evn
+
+</select>
+      <update></update>
+      <useScript>false</useScript>
+      <aggregateResults>false</aggregateResults>
+      <cacheResults>true</cacheResults>
+      <keepConnectionOpen>true</keepConnectionOpen>
+      <updateMode>1</updateMode>
+      <retryCount>3</retryCount>
+      <retryInterval>1000</retryInterval>
+      <fetchSize>1000</fetchSize>
+      <encoding>DEFAULT_ENCODING</encoding>
+    </properties>
+    <transformer version="4.4.2">
+      <elements/>
+      <inboundTemplate encoding="base64">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8cmVzdWx0Pg0KICAgIDxtc2hfc2VydmljZV9lbWV0dGV1cj52YWx1ZTwvbXNoX3NlcnZpY2VfZW1ldHRldXI+DQogICAgPG1zaF9ldGFibGlzc2VtZW50X3NvdXJjZT52YWx1ZTwvbXNoX2V0YWJsaXNzZW1lbnRfc291cmNlPg0KICAgIDxtc2hfc2VydmljZV9kZXN0aW5hdGFpcmU+dmFsdWU8L21zaF9zZXJ2aWNlX2Rlc3RpbmF0YWlyZT4NCiAgICA8bXNoX2V0YWJsaXNzZW1lbnRfZGVzdGluYXRpb24+dmFsdWU8L21zaF9ldGFibGlzc2VtZW50X2Rlc3RpbmF0aW9uPg0KICAgIDxtc2hfdHlwZV9tZXNzYWdlPnZhbHVlPC9tc2hfdHlwZV9tZXNzYWdlPg0KICAgIDxtc2hfaWRfbWVzc2FnZT52YWx1ZTwvbXNoX2lkX21lc3NhZ2U+DQogICAgPG1zaF9sYW5ndWVfbWVzc2FnZT52YWx1ZTwvbXNoX2xhbmd1ZV9tZXNzYWdlPg0KICAgIDxtc2hfZGF0ZV9oZXVyZV9wcm9kdWN0aW9uPnZhbHVlPC9tc2hfZGF0ZV9oZXVyZV9wcm9kdWN0aW9uPg0KICAgIDxwaWRfaWRlbnRpZmlhbnRfcGF0aWVudD52YWx1ZTwvcGlkX2lkZW50aWZpYW50X3BhdGllbnQ+DQogICAgPHBpZF9ub21fcGF0aWVudD52YWx1ZTwvcGlkX25vbV9wYXRpZW50Pg0KICAgIDxwaWRfcHJlbm9tX3BhdGllbnQ+dmFsdWU8L3BpZF9wcmVub21fcGF0aWVudD4NCiAgICA8cGlkX2dlbnJlPnZhbHVlPC9waWRfZ2VucmU+DQogICAgPHBpZF9hZHJlc3NlX3Bvc3RhbGU+dmFsdWU8L3BpZF9hZHJlc3NlX3Bvc3RhbGU+DQogICAgPHBpZF92aWxsZT52YWx1ZTwvcGlkX3ZpbGxlPg0KICAgIDxwaWRfY29kZV9wb3N0YWw+dmFsdWU8L3BpZF9jb2RlX3Bvc3RhbD4NCiAgICA8cGlkX3BheXM+dmFsdWU8L3BpZF9wYXlzPg0KICAgIDxwaWRfbnVtZXJvX3RlbGVwaG9uZT52YWx1ZTwvcGlkX251bWVyb190ZWxlcGhvbmU+DQogICAgPHBpZF9zdGF0dXRfbWFyaXRhbD52YWx1ZTwvcGlkX3N0YXR1dF9tYXJpdGFsPg0KICAgIDxwaWRfZGF0ZV9uYWlzc2FuY2U+dmFsdWU8L3BpZF9kYXRlX25haXNzYW5jZT4NCiAgICA8cHYxX2NvZGVfc2VydmljZT52YWx1ZTwvcHYxX2NvZGVfc2VydmljZT4NCiAgICA8cHYxX2lkZW50aWZpYW50X21lZGVjaW4+dmFsdWU8L3B2MV9pZGVudGlmaWFudF9tZWRlY2luPg0KICAgIDxwdjFfaWRlbnRpZmlhbnRfdmVudWU+dmFsdWU8L3B2MV9pZGVudGlmaWFudF92ZW51ZT4NCiAgICA8cHYxX2RhdGVfYWRtaXNzaW9uPnZhbHVlPC9wdjFfZGF0ZV9hZG1pc3Npb24+DQogICAgPGV2bl90eXBlX2V2ZW5lbWVudD52YWx1ZTwvZXZuX3R5cGVfZXZlbmVtZW50Pg0KICAgIDxldm5fZGF0ZV9ldmVuZW1lbnQ+dmFsdWU8L2V2bl9kYXRlX2V2ZW5lbWVudD4NCjwvcmVzdWx0Pg0K</inboundTemplate>
+      <inboundDataType>XML</inboundDataType>
+      <outboundDataType>XML</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+          <stripNamespaces>false</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+          <stripNamespaces>false</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="4.4.2">
+      <elements/>
+    </filter>
+    <transportName>Database Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="4.4.2">
+      <metaDataId>1</metaDataId>
+      <name>Destination 1</name>
+      <properties class="com.mirth.connect.connectors.tcp.TcpDispatcherProperties" version="4.4.2">
+        <pluginProperties/>
+        <destinationConnectorProperties version="4.4.2">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>true</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <transmissionModeProperties class="com.mirth.connect.plugins.mllpmode.MLLPModeProperties">
+          <pluginPointName>MLLP</pluginPointName>
+          <startOfMessageBytes>0B</startOfMessageBytes>
+          <endOfMessageBytes>1C0D</endOfMessageBytes>
+          <useMLLPv2>false</useMLLPv2>
+          <ackBytes>06</ackBytes>
+          <nackBytes>15</nackBytes>
+          <maxRetries>2</maxRetries>
+        </transmissionModeProperties>
+        <serverMode>false</serverMode>
+        <remoteAddress>127.0.0.1</remoteAddress>
+        <remotePort>6661</remotePort>
+        <overrideLocalBinding>false</overrideLocalBinding>
+        <localAddress>0.0.0.0</localAddress>
+        <localPort>0</localPort>
+        <sendTimeout>5000</sendTimeout>
+        <bufferSize>65536</bufferSize>
+        <maxConnections>10</maxConnections>
+        <keepConnectionOpen>false</keepConnectionOpen>
+        <checkRemoteHost>false</checkRemoteHost>
+        <responseTimeout>5000</responseTimeout>
+        <ignoreResponse>false</ignoreResponse>
+        <queueOnResponseTimeout>true</queueOnResponseTimeout>
+        <dataTypeBinary>false</dataTypeBinary>
+        <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
+        <template>${message.transformedData}</template>
+      </properties>
+      <transformer version="4.4.2">
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="4.4.2">
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>true</enabled>
+            <script>tmp[&apos;enteteMessage&apos;][&apos;identifiantMessage&apos;] = msg[&apos;msh_id_message&apos;].toString();
+tmp[&apos;enteteMessage&apos;][&apos;dateHeureProduction&apos;] = new Date().toISOString();
+
+tmp[&apos;enteteMessage&apos;][&apos;emetteur&apos;][&apos;service&apos;] = &apos;Laboratoire&apos; ;
+tmp[&apos;enteteMessage&apos;][&apos;destinataire&apos;][&apos;service&apos;] = &apos;Facturation&apos;;
+tmp[&apos;evenementActe&apos;][&apos;patient&apos;][&apos;identifiant&apos;][&apos;valeur&apos;]= msg[&apos;pid_identifiant_patient&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;patient&apos;][&apos;personnePhysique&apos;][&apos;@sexe&apos;] = msg[&apos;pid_genre&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;patient&apos;][&apos;personnePhysique&apos;][&apos;nomNaissance&apos;] = msg[&apos;pid_nom_patient&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;patient&apos;][&apos;personnePhysique&apos;][&apos;prenoms&apos;][&apos;prenom&apos;] = msg[&apos;pid_prenom_patient&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;patient&apos;][&apos;personnePhysique&apos;][&apos;dateNaissance&apos;][&apos;date&apos;] = msg[&apos;pid_date_naissance&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;venue&apos;][&apos;identifiant&apos;][&apos;valeur&apos;]=msg[&apos;pv1_identifiant_venue&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;execute&apos;][&apos;date&apos;] = msg[&apos;evn_date_evenement&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;executant&apos;][&apos;medecin&apos;][&apos;noRPPS&apos;] = msg[&apos;pv1_identifiant_medecin&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;executant&apos;][&apos;uniteFonctionnelle&apos;][&apos;code&apos;] = msg[&apos;pv1_code_service&apos;].toString();
+tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;quantite&apos;] = 1;
+tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;identifiant&apos;][&apos;valeur&apos;] = msg[&apos;pv1_code_service&apos;].toString();
+
+if( msg[&apos;pv1_code_service&apos;].toString() == &quot;LABO_CHOLESTEROL&quot; ){
+	tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;codeActe&apos;] = &apos;L001&apos;;
+	};
+	
+if( msg[&apos;pv1_code_service&apos;].toString() == &quot;LABO_COVID&quot; ){
+	tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;codeActe&apos;] = &apos;L002&apos;;
+	};
+	
+if( msg[&apos;pv1_code_service&apos;].toString() == &quot;LABO_ALLERGIE&quot; ){
+	tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;codeActe&apos;] = &apos;L003&apos;;
+	};
+	
+if( msg[&apos;pv1_code_service&apos;].toString() == &quot;LABO_DEPISTAGE&quot; ){
+	tmp[&apos;evenementActe&apos;][&apos;acte&apos;][&apos;codeActe&apos;] = &apos;L004&apos;;
+	};</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64">PHJlc3VsdD4KPG1zaF9zZXJ2aWNlX2VtZXR0ZXVyPkFETUlTU0lPTjwvbXNoX3NlcnZpY2VfZW1ldHRldXI+Cjxtc2hfZXRhYmxpc3NlbWVudF9zb3VyY2U+VVQzPC9tc2hfZXRhYmxpc3NlbWVudF9zb3VyY2U+Cjxtc2hfc2VydmljZV9kZXN0aW5hdGFpcmU+TEFCTzwvbXNoX3NlcnZpY2VfZGVzdGluYXRhaXJlPgo8bXNoX2V0YWJsaXNzZW1lbnRfZGVzdGluYXRpb24+VVQzPC9tc2hfZXRhYmxpc3NlbWVudF9kZXN0aW5hdGlvbj4KPG1zaF90eXBlX21lc3NhZ2U+QURUX0EwMTwvbXNoX3R5cGVfbWVzc2FnZT4KPG1zaF9pZF9tZXNzYWdlPjAwMTwvbXNoX2lkX21lc3NhZ2U+Cjxtc2hfbGFuZ3VlX21lc3NhZ2U+RlI8L21zaF9sYW5ndWVfbWVzc2FnZT4KPG1zaF9kYXRlX2hldXJlX3Byb2R1Y3Rpb24+MjAyMy0xMS0yOCAxNDo0MDoyNS4xMjUyNDQ8L21zaF9kYXRlX2hldXJlX3Byb2R1Y3Rpb24+CjxwaWRfaWRlbnRpZmlhbnRfcGF0aWVudD5JREVOVElGSUFOVF9QQVRJRU5UKElQUCk8L3BpZF9pZGVudGlmaWFudF9wYXRpZW50Pgo8cGlkX25vbV9wYXRpZW50Pk5PTV9QQVRJRU5UPC9waWRfbm9tX3BhdGllbnQ+CjxwaWRfcHJlbm9tX3BhdGllbnQ+UFJFTk9NX1BBVElFTlQ8L3BpZF9wcmVub21fcGF0aWVudD4KPHBpZF9nZW5yZT5HRU5SRShNL0YvVSk8L3BpZF9nZW5yZT4KPHBpZF9hZHJlc3NlX3Bvc3RhbGU+QURSRVNTRV9QT1NUQUxFPC9waWRfYWRyZXNzZV9wb3N0YWxlPgo8cGlkX3ZpbGxlPlZJTExFPC9waWRfdmlsbGU+CjxwaWRfY29kZV9wb3N0YWw+Q09ERV9QT1NUQUw8L3BpZF9jb2RlX3Bvc3RhbD4KPHBpZF9wYXlzPlBBWVM8L3BpZF9wYXlzPgo8cGlkX251bWVyb190ZWxlcGhvbmU+TlVNRVJPX1RFTEVQSE9ORTwvcGlkX251bWVyb190ZWxlcGhvbmU+CjxwaWRfc3RhdHV0X21hcml0YWw+U1RBVFVUX01BUklUQUw8L3BpZF9zdGF0dXRfbWFyaXRhbD4KPHBpZF9kYXRlX25haXNzYW5jZT4yMDI0LTAyLTAyPC9waWRfZGF0ZV9uYWlzc2FuY2U+CjxwdjFfY29kZV9zZXJ2aWNlPkNPREVfU0VSVklDRSAoVUYpPC9wdjFfY29kZV9zZXJ2aWNlPgo8cHYxX2lkZW50aWZpYW50X21lZGVjaW4+SURFTlRJRklBTlRfTUVERUNJTiAoUlBQUyk8L3B2MV9pZGVudGlmaWFudF9tZWRlY2luPgo8cHYxX2lkZW50aWZpYW50X3ZlbnVlPklERU5USUZJQU5UX1ZFTlVFIChJRVApPC9wdjFfaWRlbnRpZmlhbnRfdmVudWU+CjxwdjFfZGF0ZV9hZG1pc3Npb24+MjAyNC0wMi0wMjwvcHYxX2RhdGVfYWRtaXNzaW9uPgo8ZXZuX3R5cGVfZXZlbmVtZW50PkEwMTwvZXZuX3R5cGVfZXZlbmVtZW50Pgo8ZXZuX2RhdGVfZXZlbmVtZW50PjIwMjQtMDItMDI8L2V2bl9kYXRlX2V2ZW5lbWVudD4KPC9yZXN1bHQ+</inboundTemplate>
+        <outboundTemplate encoding="base64">PGV2ZW5lbWVudHNBY3Rlcz4KPGVudGV0ZU1lc3NhZ2U+CjxpZGVudGlmaWFudE1lc3NhZ2U+MDAwMDwvaWRlbnRpZmlhbnRNZXNzYWdlPgo8ZGF0ZUhldXJlUHJvZHVjdGlvbj5ZWVlZLU1NLUREVEhIOm1tOnNzPC9kYXRlSGV1cmVQcm9kdWN0aW9uPgo8ZW1ldHRldXI+CjxzZXJ2aWNlPlNlcnZpY2VfRW1ldHRldXI8L3NlcnZpY2U+CjwvZW1ldHRldXI+CjxkZXN0aW5hdGFpcmU+CjxzZXJ2aWNlPlNlcnZpY2VfRGVzdGluYXRhaXJlPC9zZXJ2aWNlPgo8L2Rlc3RpbmF0YWlyZT4KPC9lbnRldGVNZXNzYWdlPgo8ZXZlbmVtZW50QWN0ZT4KPHBhdGllbnQ+CjxpZGVudGlmaWFudD4KPHZhbGV1cj4wMDAwMDAwMDA8L3ZhbGV1cj4KPC9pZGVudGlmaWFudD4KPHBlcnNvbm5lUGh5c2lxdWUgc2V4ZT0iTS9GL0kiPgo8bm9tTmFpc3NhbmNlPk5PTTwvbm9tTmFpc3NhbmNlPgo8cHJlbm9tcz4KPHByZW5vbT5QUkVOT008L3ByZW5vbT4KPC9wcmVub21zPgo8ZGF0ZU5haXNzYW5jZT4KPGRhdGU+WVlZWS1NTS1ERDwvZGF0ZT4KPC9kYXRlTmFpc3NhbmNlPgo8L3BlcnNvbm5lUGh5c2lxdWU+CjwvcGF0aWVudD4KPHZlbnVlPgo8aWRlbnRpZmlhbnQ+Cjx2YWxldXI+MDAwMDAwMDA8L3ZhbGV1cj4KPC9pZGVudGlmaWFudD4KPC92ZW51ZT4KPGFjdGU+CjxpZGVudGlmaWFudD4KPHZhbGV1cj4wMDAwMDwvdmFsZXVyPgo8L2lkZW50aWZpYW50Pgo8Y29kZUFjdGU+QUFBMDAwPC9jb2RlQWN0ZT4KPGV4ZWN1dGU+CjxkYXRlPllZWVktTU0tREQ8L2RhdGU+CjwvZXhlY3V0ZT4KPGV4ZWN1dGFudD4KPG1lZGVjaW4+Cjxub1JQUFM+MDEyMzQ1Njc4OTA8L25vUlBQUz4KPC9tZWRlY2luPgo8dW5pdGVGb25jdGlvbm5lbGxlPgo8Y29kZT4wMDAwPC9jb2RlPgo8L3VuaXRlRm9uY3Rpb25uZWxsZT4KPC9leGVjdXRhbnQ+CjxxdWFudGl0ZT4xPC9xdWFudGl0ZT4KPC9hY3RlPgo8L2V2ZW5lbWVudEFjdGU+CjwvZXZlbmVtZW50c0FjdGVzPg==</outboundTemplate>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="4.4.2">
+        <elements/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="4.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="4.4.2">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="4.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="4.4.2">
+        <elements/>
+      </filter>
+      <transportName>TCP Sender</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="4.4.2">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <encryptAttachments>false</encryptAttachments>
+    <encryptCustomMetaData>false</encryptCustomMetaData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>true</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="4.4.2">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1701387194079</time>
+        <timezone>Europe/Paris</timezone>
+      </lastModified>
+      <pruningSettings>
+        <archiveEnabled>true</archiveEnabled>
+        <pruneErroredMessages>false</pruneErroredMessages>
+      </pruningSettings>
+      <userId>1</userId>
+    </metadata>
+  </exportData>
+</channel>
